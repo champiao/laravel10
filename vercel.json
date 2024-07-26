@@ -15,7 +15,6 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
-        "APP_KEY": "@app_key", 
         "CACHE_DRIVER": "file",
         "SESSION_DRIVER": "file",
         "QUEUE_CONNECTION": "sync"
