@@ -8,8 +8,9 @@ use App\Http\Controllers\User;
 Route::get('/', function () {
     return redirect('/series');
 });
-Route::resource('series', SeriesController::class)->except(['show']);
-
+Route::middleware('OwnCors')->group(function () {
+    Route::resource('series', SeriesController::class)->except(['show']);
+});
 Route::get('/users/login',[User::class,'login']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/user', [User::class, 'getUser'])->name('user')->middleware('auth');
