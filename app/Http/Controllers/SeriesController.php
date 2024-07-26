@@ -21,6 +21,7 @@ class SeriesController extends Controller
             return("Error: ".$e->getMessage());
         }
     }
+    
     public function create() {
         return view('series.create');
     }
@@ -37,16 +38,19 @@ class SeriesController extends Controller
             return to_route('series.index');
         }
     }
-    public function destroy(SeriesController $request, $id) {
+
+    public function destroy(Request $request, $id) {
         $serie = Serie::find($id);
         Serie::destroy($id);
         $request->session()->flash("message.success", "Serie {$serie->name} excluída com sucesso!");
         return to_route('series.index');
     }
+
     public function edit($id) {
         $serie = Serie::find($id);
         return view('series.edit', compact('serie'));
     }
+
     public function update(SeriesFormRequest $request, $id) {
         $serie = Serie::find($id);
         $serie->update($request->all());

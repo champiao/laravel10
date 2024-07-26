@@ -35,7 +35,7 @@ class User extends Controller
     {
         try{
             $users = UserModel::all();
-            if (count($users) == 0) {
+            if ($users == null) {
                 $nonUsers = new UserModel;
                 $nonUsers->name = 'Nenhum Usuário Encontrado';
                 $nonUsers->id = 0;

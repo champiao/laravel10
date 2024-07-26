@@ -3,7 +3,7 @@
 use App\Http\Controllers\SeriesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User;
-use Fruitcake\Cors\HandleCors;
+
 
 Route::get('/', function () {
     return redirect('/series');
@@ -25,4 +25,4 @@ Route::post('/users/auth',[User::class,'auth']);
 Route::get('/users/auth', [User::class, 'auth']);
 Route::get('/users/create', [User::class, 'create']);
 Route::post('/users/store', [User::class, 'store']);
-Route::post('/users/delete/{id}', [User::class, 'destroy']);
+Route::delete('/users/delete/{id}', [User::class, 'destroy'])->name('user.destroy');
