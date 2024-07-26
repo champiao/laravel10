@@ -2,21 +2,14 @@
     "version": 2,
     "builds": [
         {
-            "src": "public/index.php",
-            "use": "@vercel/php@0.7.0" 
+            "src": "Dockerfile",
+            "use": "@vercel/docker"
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/api/index.php"
+            "dest": "/public/index.php"
         }
-    ],
-    "env": {
-        "APP_ENV": "production",
-        "APP_DEBUG": "false",
-        "CACHE_DRIVER": "file",
-        "SESSION_DRIVER": "file",
-        "QUEUE_CONNECTION": "sync"
-    }
+    ]
 }
