@@ -3,12 +3,13 @@
 use App\Http\Controllers\SeriesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User;
+use App\Http\Middleware\OwnCors;
 
 
 Route::get('/', function () {
     return redirect('/series');
 });
-Route::middleware('OwnCors')->group(function () {
+Route::middleware(OwnCors::class)->group(function () {
     Route::resource('series', SeriesController::class)->except(['show']);
 });
 Route::get('/users/login',[User::class,'login']);
