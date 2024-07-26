@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e8c3c14ff33b199b4a0838993eb8423",
+    "content-hash": "58725fa068c8e34aefcc346bf7fa0b49",
     "packages": [
         {
             "name": "brick/math",
@@ -1814,6 +1814,75 @@
                 }
             ],
             "time": "2024-01-28T23:22:08+00:00"
+        },
+        {
+            "name": "microweber-deps/laravel-cors",
+            "version": "v3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/microweber-deps/laravel-cors.git",
+                "reference": "0da3972222913272043d8cc21f2e695c93b5ac71"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/microweber-deps/laravel-cors/zipball/0da3972222913272043d8cc21f2e695c93b5ac71",
+                "reference": "0da3972222913272043d8cc21f2e695c93b5ac71",
+                "shasum": ""
+            },
+            "require": {
+                "fruitcake/php-cors": "^1.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Fruitcake\\Cors\\CorsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fruitcake\\Cors\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fruitcake",
+                    "homepage": "https://fruitcake.nl"
+                },
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Fork of fruitcake/laravel-cors  Adds CORS (Cross-Origin Resource Sharing) headers support in your Laravel application",
+            "keywords": [
+                "api",
+                "cors",
+                "crossdomain",
+                "laravel"
+            ],
+            "support": {
+                "source": "https://github.com/microweber-deps/laravel-cors/tree/v3.1"
+            },
+            "funding": [
+                {
+                    "url": "https://fruitcake.nl",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/barryvdh",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-01-26T17:04:55+00:00"
         },
         {
             "name": "monolog/monolog",
