@@ -3,6 +3,7 @@
 use App\Http\Controllers\SeriesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User;
+use Fruitcake\Cors\HandleCors;
 
 Route::get('/', function () {
     return redirect('/series');
