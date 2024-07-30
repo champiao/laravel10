@@ -60,16 +60,20 @@ class User extends Controller
         }
         return view('user.user')->with('users', $user);
     }
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         try{
             $user = UserModel::find($id);
             $user->delete();
         }
         catch(\Exception $e){
-            return("Error: ".$e->getMessage());
+            $request->session()->flash( 'message.error', 'Erro ao excluir usuário');
+            $errorMessage = $request->session()->get('message.error');
+            return redirect('/users/all')->with('messageError', $errorMessage);
         }
-        return redirect('/users/all');
+        $request->session()->flash( 'message.success', 'Usuário excluído com sucesso');
+        $sucessMessage = $request->session()->get('message.success');
+        return redirect('/users/all')->with('messageSuccess', $sucessMessage);
     }
     public function login(){
         return view('user.login');

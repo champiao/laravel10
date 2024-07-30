@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Series.form extends Component
+class series.form extends Component
 {
     /**
      * Create a new component instance.

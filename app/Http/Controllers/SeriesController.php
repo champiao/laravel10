@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SeriesFormRequest;
+use App\Http\Requests\seriesFormRequest;
 use Illuminate\Http\Request;
-use App\Models\Serie;
+use App\Models\Series as series;
 
-class SeriesController extends Controller
+class seriesController extends Controller
 {
     public function index(Request $request) 
     {
         try{
-            $series = Serie::query()->orderBy('name')->get();
+            $series = series::with('seasons')->get()->sortBy(['name', 'asc']);
             $successMessage = session('message.success');
+            if ($successMessage == '' ) {
+                session()->forget('message.success');
+                session()->put('message.success', 'Series listadas com sucesso!');
+            }
             return view('series.index')
                 ->with('series', $series)
                 ->with('messageSuccess', $successMessage)
@@ -26,35 +30,35 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-    public function store(SeriesFormRequest $request) {
-        $exist = Serie::where('name', $request->name)->first();
+    public function store(seriesFormRequest $request) {
+        $exist = series::where('name', $request->name)->first();
         if ($exist == null) {
-            $serie = Serie::create($request->all());
-            $request->session()->flash('message.success', "Serie {$serie->name} criada com sucesso!");
+            $series = series::create($request->all());
+            $request->session()->flash('message.success', "series {$series->name} criada com sucesso!");
             return to_route('series.index');
         }
         else{
-            $request->session()->flash('message.error', "A Serie {$request->name} ja existe no banco de dados");
+            $request->session()->flash('message.error', "A series {$request->name} ja existe no banco de dados");
             return to_route('series.index');
         }
     }
 
     public function destroy(Request $request, $id) {
-        $serie = Serie::find($id);
-        Serie::destroy($id);
-        $request->session()->flash("message.success", "Serie {$serie->name} excluída com sucesso!");
+        $series = series::find($id);
+        series::destroy($id);
+        $request->session()->flash("message.success", "series {$series->name} excluída com sucesso!");
         return to_route('series.index');
     }
 
     public function edit($id) {
-        $serie = Serie::find($id);
-        return view('series.edit', compact('serie'));
+        $series = series::find($id);
+        return view('series.edit', compact('series'));
     }
 
-    public function update(SeriesFormRequest $request, $id) {
-        $serie = Serie::find($id);
-        $serie->update($request->all());
-        $request->session()->flash('message.success', "Serie {$serie->name} atualizada com sucesso!");
+    public function update(seriesFormRequest $request, $id) {
+        $series = series::find($id);
+        $series->update($request->all());
+        $request->session()->flash('message.success', "series {$series->name} atualizada com sucesso!");
         return to_route('series.index');
     }
 }

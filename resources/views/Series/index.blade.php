@@ -11,12 +11,13 @@
         </div>
         @endisset
         <ul class="list-group ">
-            @foreach($series as $serie)
+            @foreach($series as $series)
             <li class="list-group-item">
-                {{ $serie->name }}
+                {{ $series->name }}
+                {{-- {{ $series->seasons }} --}}
             <span class="d-flex justify-content-end" >
-                <a href="{{ route('series.edit', $serie->id) }}" class="btn  btn-primary btn-sm float-end">Edit</a>
-                <form action="{{ route('series.destroy', $serie->id) }}" method="post" class="ms-2">
+                <a href="{{ route('series.edit', $series->id) }}" class="btn  btn-primary btn-sm float-end">Edit</a>
+                <form action="{{ route('series.destroy', $series->id) }}" method="post" class="ms-2">
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-danger btn-sm btn-delete float-end">
